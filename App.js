@@ -5,23 +5,23 @@ import { UnitsContext, WorkoutContext } from './components/Context';
 import { MD3LightTheme, PaperProvider } from 'react-native-paper';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { NavigationContainer } from '@react-navigation/native';
-import AddWorkout from './components/AddWorkoutView';
-import Settings from './components/SettingsView';
-import WorkoutList from './components/WorkoutListView';
+import AddWorkoutView from './components/AddWorkoutView';
+import WorkoutListView from './components/WorkoutListView';
+import SettingsView from './components/SettingsView';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import Style from './styles/Style';
 
 const Tab = createMaterialTopTabNavigator();
 
 function Navigator() {
   return (
     <NavigationContainer>
-      <Tab.Navigator>
-        <Tab.Screen name="addWorkout" component={AddWorkout} />
-        <Tab.Screen name="workoutList" component={WorkoutList} />
-        <Tab.Screen name="Settings" component={Settings} />
+      <Tab.Navigator tabBarPosition='bottom' style={Style.container}>
+        <Tab.Screen name="addWorkout" options={{title: 'add workout'}} component={AddWorkoutView} />
+        <Tab.Screen name="workoutList" options={{title: 'list of workouts'}} component={WorkoutListView} />
+        <Tab.Screen name="Settings" options={{title: 'settings'}} component={SettingsView} />
       </Tab.Navigator>
     </NavigationContainer>
-
-
   );
 }
 
@@ -34,7 +34,10 @@ export default function App() {
     <WorkoutContext.Provider value = {{workout, setWorkout}}>
       <UnitsContext.Provider value={{units, setUnits}}>
         <PaperProvider theme={MD3LightTheme}>
-          <Navigator />
+          <SafeAreaProvider>
+            <Navigator />
+          </SafeAreaProvider>
+          
           
         </PaperProvider>
       </UnitsContext.Provider>

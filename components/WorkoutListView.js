@@ -1,6 +1,6 @@
 import { Text } from "react-native-paper";
 
-export default function WorkoutList(){
+export default function WorkoutListView(){
     return(
         <Text>Workout List</Text>
     )
