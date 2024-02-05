@@ -1,28 +1,33 @@
 import { View } from "react-native";
 import { Modal, Portal, Text, Button, PaperProvider } from 'react-native-paper';
 import * as React from 'react';
+import { useState } from "react";
 import { SafeAreaView, StyleSheet } from 'react-native';
 import { SegmentedButtons } from 'react-native-paper';
 import { TextInput } from 'react-native-paper';
-import { Icon, MD3Colors } from 'react-native-paper';
+import {Calendar, LocaleConfig} from 'react-native-calendars';
+
+//import { Icon, MD3Colors } from 'react-native-paper';
+//import { UnitsContext, WorkoutContext } from './components/Context';
 
 
 
 export default function AddWorkoutView(){
-    const [value, setValue] = React.useState('run');
-    const [distance, setDistance] = React.useState('');
-    const [duration, setDuration] = React.useState('');
-
-    const [visible, setVisible] = React.useState(false);
+    const [value, setValue] = useState('run');
+    const [distance, setDistance] = useState('');
+    const [duration, setDuration] = useState('');
+    
+    const [visible, setVisible] = useState(false);
 
     const showModal = () => setVisible(true);
     const hideModal = () => setVisible(false);
     const containerStyle = {backgroundColor: 'white', padding: 20};
+    const [selected, setSelected] = useState('');
 
     return(
         <View>
             
-            <Text>Add workout</Text>
+            <Text variant="headlineLarge">Add workout</Text>
             <SafeAreaView >
           <SegmentedButtons
             value={value}
@@ -55,15 +60,22 @@ export default function AddWorkoutView(){
                 value={duration}
                 onChangeText={duration => setDuration(duration)}
             />
-            
-                <Portal>
-                    <Modal visible={visible} onDismiss={hideModal} contentContainerStyle={containerStyle}>
-                        <Text>Example Modal.  Click outside this area to dismiss.</Text>
-                    </Modal>
-                </Portal>
-                <Button mode='contained-tonal' style={{ marginTop: 30 }} onPress={showModal}>
-                    Show
-                </Button>
+
+            <Portal>
+                <Modal visible={visible} onDismiss={hideModal} contentContainerStyle={containerStyle}>
+                    <Calendar
+                        onDayPress={day => {
+                            setSelected(day.dateString);
+                        }}
+                        markedDates={{
+                            [selected]: { selected: true, disableTouchEvent: true, selectedDotColor: 'orange' }
+                        }}
+                    />
+                </Modal>
+            </Portal>
+            <Button mode='contained-tonal' style={{ marginTop: 30 }} onPress={showModal}>
+                Show
+            </Button>
            
             <Button mode="contained">Add Workout</Button>
             
