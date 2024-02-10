@@ -11,11 +11,12 @@ import Style from "../styles/Style";
 
 
 //import { Icon, MD3Colors } from 'react-native-paper';
-//import { UnitsContext, WorkoutContext } from './components/Context';
+
 
 
 
 export default function AddWorkoutView(){
+
     const [value, setValue] = useState('run');
     const [distance, setDistance] = useState('');
     const [duration, setDuration] = useState('');
@@ -26,15 +27,22 @@ export default function AddWorkoutView(){
     const hideModal = () => setVisible(false);
     const containerStyle = {backgroundColor: 'white', padding: 20};
 
-    const [selected, setSelected] = useState('');
+    const [selected, setSelected] = useState('');//to select date in the calendar
 
-    const {setWorkouts} = useContext(WorkoutContext);
+    //const {workouts, setWorkouts} = useContext(WorkoutContext);
+    const {units} = useContext(UnitsContext);
+    const {setWorkouts} = useContext(WorkoutContext); 
+
+    const [newWorkout, setNewWorkout] = useState({});
 
     function addWorkout(){
         //const setWorkouts = () => [...prev, {value, distance, duration, selected}]);
+        setNewWorkout({"type":value, "distance": distance, "duration": duration, "date":selected});
+        //setWorkouts = () => [...prev, newWorkout];
+        setWorkouts( prev => [...prev, newWorkout]);
         setDistance('');
         setDuration('');
-        console.log("Hei!");
+        console.log(newWorkout);
     };
 
     return(
@@ -66,13 +74,13 @@ export default function AddWorkoutView(){
                 />
             </SafeAreaView>
             <TextInput
-                label="Distance"
+                label={"Distance ("+ units +')'}
                 value={distance}
                 onChangeText={setDistance}
                
             />
             <TextInput
-                label="Duration"
+                label="Duration (min)"
                 value={duration}
                 onChangeText={setDuration}
             />

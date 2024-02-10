@@ -7,12 +7,12 @@ import { WorkoutContext, UnitsContext } from "./Context";
 export default function SettingsView() {
 
     const [unit, setUnit] = useState("km");
-    //const [units, setUnits] = useContext(UnitsContext);
+    const {units, setUnits} = useContext(UnitsContext);
 
 
     const changeUnits = (value) =>{
         setUnit(value)
-        //setUnits(value)
+        setUnits(value)
         Alert.alert('Units was changed to ' + value)
         console.log(value)
     }

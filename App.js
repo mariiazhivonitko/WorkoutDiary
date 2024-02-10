@@ -27,18 +27,16 @@ function Navigator() {
 
 export default function App() {
 
-  const [workout, setWorkout] = useState([]);
-  const [units, setUnits] = useState(true);
+  const [workouts, setWorkouts] = useState([]);
+  const [units, setUnits] = useState("km");
 
   return (
-    <WorkoutContext.Provider value = {{workout, setWorkout}}>
+    <WorkoutContext.Provider value = {{workouts, setWorkouts}}>
       <UnitsContext.Provider value={{units, setUnits}}>
         <PaperProvider theme={MD3LightTheme}>
           <SafeAreaProvider>
             <Navigator />
-          </SafeAreaProvider>
-          
-          
+          </SafeAreaProvider>       
         </PaperProvider>
       </UnitsContext.Provider>
     </WorkoutContext.Provider>
