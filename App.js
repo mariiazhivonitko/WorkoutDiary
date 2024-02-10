@@ -27,7 +27,11 @@ function Navigator() {
 
 export default function App() {
 
-  const [workouts, setWorkouts] = useState([]);
+  let firstworkouts = [{type: "run", distance: "5", duration: "40", date: "1.1.2024"},
+  {type: "swim", distance: "2", duration: "90", date: "2.1.2024"},
+  {type: "ski", distance: "10", duration: "60", date: "3.1.2024"}]
+
+  const [workouts, setWorkouts] = useState(firstworkouts);
   const [units, setUnits] = useState("km");
 
   return (

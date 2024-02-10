@@ -33,16 +33,17 @@ export default function AddWorkoutView(){
     const {units} = useContext(UnitsContext);
     const {setWorkouts} = useContext(WorkoutContext); 
 
-    const [newWorkout, setNewWorkout] = useState({});
+    //const [newWorkout, setNewWorkout] = useState({});
 
     function addWorkout(){
         //const setWorkouts = () => [...prev, {value, distance, duration, selected}]);
-        setNewWorkout({"type":value, "distance": distance, "duration": duration, "date":selected});
+        //setNewWorkout({"type":value, "distance": distance, "duration": duration, "date":selected});
         //setWorkouts = () => [...prev, newWorkout];
-        setWorkouts( prev => [...prev, newWorkout]);
+        setWorkouts( prev => [...prev, {"type":value, "distance": distance, "duration": duration, "date":selected}]);
         setDistance('');
         setDuration('');
-        console.log(newWorkout);
+        setSelected('');
+        //console.log(newWorkout);
     };
 
     return(
@@ -104,7 +105,8 @@ export default function AddWorkoutView(){
             </Button>
 
             <Button mode="contained" onPress={addWorkout}>Add Workout</Button>
-
+                     {/* <TextInput style={Style.formfield} label={'Message'} value={msg} onChangeText={setMsg}/> */}
+                     {/* <Button style={Style.formfield} mode="contained" onPress={addMessage}>Add message</Button> */}
 
         </View>
         
