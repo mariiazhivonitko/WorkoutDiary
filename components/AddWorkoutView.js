@@ -39,7 +39,11 @@ export default function AddWorkoutView(){
         //const setWorkouts = () => [...prev, {value, distance, duration, selected}]);
         //setNewWorkout({"type":value, "distance": distance, "duration": duration, "date":selected});
         //setWorkouts = () => [...prev, newWorkout];
-        setWorkouts( prev => [...prev, {"type":value, "distance": distance, "duration": duration, "date":selected}]);
+        if (units==="km")
+        {setWorkouts( prev => [...prev, {"type":value, "distance": distance, "duration": duration, "date":selected}])}
+        else{setWorkouts( prev => [...prev, {"type":value, "distance": (distance*1.60934).toFixed(1), "duration": duration, "date":selected}])
+
+        };
         setDistance('');
         setDuration('');
         setSelected('');
@@ -78,12 +82,14 @@ export default function AddWorkoutView(){
                 label={"Distance ("+ units +')'}
                 value={distance}
                 onChangeText={setDistance}
+                keyboardType='numeric'
                
             />
             <TextInput
                 label="Duration (min)"
                 value={duration}
                 onChangeText={setDuration}
+                keyboardType='numeric'
             />
 
             <Portal>
