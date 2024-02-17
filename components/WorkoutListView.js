@@ -8,8 +8,23 @@ import { Avatar, Card, IconButton, SegmentedButtons } from 'react-native-paper';
 export default function WorkoutListView(){
 
     const {workouts} = useContext(WorkoutContext);
+    const {units} = useContext(UnitsContext)
     //const {units} = useContext(UnitsContext);
     const [value, setValue] = useState('run');
+    console.log(sumDistance() + " sum");
+
+    
+
+    function sumDistance(type){
+        let sumDist = 0;
+        
+        for (let i=0; i<workouts.length; i++){
+            if (workouts[i].type === type){
+            sumDist += +workouts[i].distance;}
+        }
+        return sumDist;
+       // console.log(workouts[2].distance)
+    }
     
 
     return(
@@ -20,18 +35,18 @@ export default function WorkoutListView(){
                     buttons={[
                         {
                             value: 'run',
-                            label: 'Run',
+                            label: sumDistance("run") + " " + units,
                             icon: 'run-fast'
 
                         },
                         {
                             value: 'ski',
-                            label: 'Ski',
+                            label: sumDistance("ski") + " " + units,
                             icon: 'ski'
                         },
                         {
                             value: 'swim',
-                            label: 'Swim',
+                            label: sumDistance("swim") + " " + units,
                             icon: 'swim'
                         },
                     ]}
@@ -44,6 +59,7 @@ export default function WorkoutListView(){
         </View>
     );
 }
+
 
 // const sumdistanceByType = workouts.reduce((acc, { type, distance }) => {
 //     acc[type] = acc[type] || { type, distance: 0 };

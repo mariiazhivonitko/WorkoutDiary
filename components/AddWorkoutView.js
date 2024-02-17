@@ -25,7 +25,7 @@ export default function AddWorkoutView(){
     const [visible, setVisible] = useState(false);
     const showModal = () => setVisible(true);
     const hideModal = () => setVisible(false);
-    const containerStyle = {backgroundColor: 'white', padding: 20};
+    const containerStyle = {backgroundColor: 'black', padding: 20};
 
     const [selected, setSelected] = useState('');//to select date in the calendar
 
@@ -51,11 +51,12 @@ export default function AddWorkoutView(){
     };
 
     return(
-        <View style={Style.navview}>
+        <View style={Style.container}>
 
             <Text variant="headlineLarge">Add workout</Text>
             <SafeAreaView >
                 <SegmentedButtons
+                    style = {Style.formfield}
                     value={value}
                     onValueChange={setValue}
                     buttons={[
@@ -83,6 +84,7 @@ export default function AddWorkoutView(){
                 value={distance}
                 onChangeText={setDistance}
                 keyboardType='numeric'
+                style = {Style.formfield}
                
             />
             <TextInput
@@ -90,6 +92,7 @@ export default function AddWorkoutView(){
                 value={duration}
                 onChangeText={setDuration}
                 keyboardType='numeric'
+                style = {Style.formfield}
             />
 
             <Portal>

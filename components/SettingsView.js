@@ -16,7 +16,7 @@ export default function SettingsView() {
         Alert.alert('Units was changed to ' + value)
        
     }
-    console.log(units)
+    //console.log(units)
 
 
     return (
