@@ -3,6 +3,7 @@ import { useContext, useEffect, useState } from "react";
 import { Alert, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { WorkoutContext, UnitsContext } from "./Context";
+import Style from "../styles/Style";
 
 export default function SettingsView() {
 
@@ -20,8 +21,8 @@ export default function SettingsView() {
 
 
     return (
-        <View>
-            <Text variant="headlineLarge">Settings</Text>
+        <View style={Style.container}>
+            <Text variant="headlineLarge" style={Style.header}>Settings</Text>
             <Card>
                 <RadioButton.Group onValueChange={changeUnits} value={unit} >
                     <RadioButton.Item label="Kilometers" value="km" />

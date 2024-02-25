@@ -53,7 +53,7 @@ export default function AddWorkoutView(){
     return(
         <View style={Style.container}>
 
-            <Text variant="headlineLarge">Add workout</Text>
+            <Text variant="headlineLarge" style={Style.header}>Add workout</Text>
             <SafeAreaView >
                 <SegmentedButtons
                     style = {Style.formfield}
@@ -109,11 +109,11 @@ export default function AddWorkoutView(){
                     />
                 </Modal>
             </Portal>
-            <Button mode='contained-tonal' style={{ marginTop: 30 }} onPress={showModal} icon='calendar'>
+            <Button mode='contained-tonal' style={Style.button} onPress={showModal} icon='calendar'>
                 {selected ? selected : 'select date'}
             </Button>
 
-            <Button mode="contained" onPress={addWorkout}>Add Workout</Button>
+            <Button mode="contained" onPress={addWorkout} style={Style.button}>Add Workout</Button>
                      {/* <TextInput style={Style.formfield} label={'Message'} value={msg} onChangeText={setMsg}/> */}
                      {/* <Button style={Style.formfield} mode="contained" onPress={addMessage}>Add message</Button> */}
 

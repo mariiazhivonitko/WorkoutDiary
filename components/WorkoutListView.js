@@ -3,14 +3,15 @@ import { useContext, useState } from "react";
 import { UnitsContext, WorkoutContext } from './Context';
 import { FlatList, View } from "react-native";
 import { Avatar, Card, IconButton, SegmentedButtons } from 'react-native-paper';
+import Style from "../styles/Style";
 
 
 export default function WorkoutListView(){
 
     const {workouts} = useContext(WorkoutContext);
-    const {units} = useContext(UnitsContext)
-    //const {units} = useContext(UnitsContext);
-    const [value, setValue] = useState('run');
+    const {units} = useContext(UnitsContext);
+    
+    //const [value, setValue] = useState('run');
     console.log(sumDistance() + " sum");
 
     
@@ -28,25 +29,27 @@ export default function WorkoutListView(){
     
 
     return(
-        <View>
+        <View style={Style.container}>
+            <Text variant="headlineLarge" style={Style.header}>Workouts</Text>
             <SegmentedButtons
-                    value={value}
-                    onValueChange={setValue}
+                    style = {Style.button}
+                    //value={value}
+                    //onValueChange={setValue}
                     buttons={[
                         {
                             value: 'run',
-                            label: sumDistance("run") + " " + units,
+                            label: (units === 'km' ? sumDistance("run") : (sumDistance("run") / 1.60934).toFixed(0)) + " " + units,
                             icon: 'run-fast'
 
                         },
                         {
                             value: 'ski',
-                            label: sumDistance("ski") + " " + units,
+                            label: (units === 'km' ? sumDistance("ski") : (sumDistance("ski") / 1.60934).toFixed(0)) + " " + units,
                             icon: 'ski'
                         },
                         {
                             value: 'swim',
-                            label: sumDistance("swim") + " " + units,
+                            label: (units === 'km' ? sumDistance("swim") : (sumDistance("swim") / 1.60934).toFixed(0)) + " " + units,
                             icon: 'swim'
                         },
                     ]}
@@ -72,23 +75,26 @@ function Item({workout}){
     console.log(units);
 
     return(
-        <View>
-            
-            <Card>
-                <Card.Title
-                    title={workout.date}
-                    left={(props) => <Avatar.Icon {...props} icon={workout.type} />}
-                />
-                <Card.Content>
-                    
-                    <Text variant="bodyMedium">Distance: {units==="km" ? workout.distance: (workout.distance*1.60934).toFixed(1)} {units} </Text>                    
-                    <Text variant="bodyMedium">Duration: {workout.duration} min</Text>
-                    
-                </Card.Content>
-            </Card>
+        
 
-            
-         
-        </View>
+            <View >
+
+                <Card>
+                    <Card.Title
+                        title={workout.date}
+                        left={(props) => <Avatar.Icon {...props} icon={workout.type} />}
+                    />
+                    <Card.Content>
+
+                        <Text variant="bodyMedium">Distance: {units === "km" ? workout.distance : (workout.distance /1.60934).toFixed(1)} {units} </Text>
+                        <Text variant="bodyMedium">Duration: {workout.duration} min</Text>
+
+                    </Card.Content>
+                </Card>
+
+
+
+            </View>
+       
     );
 }

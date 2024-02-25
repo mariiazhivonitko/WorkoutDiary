@@ -19,10 +19,11 @@ function Navigator() {
     <NavigationContainer>
       <Tab.Navigator 
         tabBarPosition='bottom' 
-        style={Style.container}
-        screenOptions={{tabBarActiveTintColor: 'black', 
-        tabBarInactiveTintColor: MyTheme.colors.primary,
-        tabBarStyle: {backgroundColor: MyTheme.colors.surfaceVariant}}} >
+        //style={Style.container}
+        // screenOptions={{tabBarActiveTintColor: 'white', 
+        // tabBarInactiveTintColor: MyTheme.colors.primary,
+        // tabBarStyle: {backgroundColor: MyTheme.colors.surfaceVariant}}}
+         >
         <Tab.Screen 
           name="addWorkout" 
           options={{title: 'add workout', tabBarIcon: ({color}) => <Icon color={color} source='heart-plus' size={24} />}} 
@@ -53,7 +54,7 @@ export default function App() {
     
     <WorkoutContext.Provider value = {{workouts, setWorkouts}}>
       <UnitsContext.Provider value={{units, setUnits}}>
-        <PaperProvider theme={MD3DarkTheme}>
+        <PaperProvider theme={MyTheme}>
           <SafeAreaProvider>
             <Navigator />
           </SafeAreaProvider>       
