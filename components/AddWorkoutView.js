@@ -83,7 +83,14 @@ export default function AddWorkoutView(){
             <TextInput
                 label={"Distance ("+ units +')'}
                 value={distance}
-                onChangeText={setDistance}
+                onChangeText={text => {
+                    // Allow only numeric values and prevent negative inputs
+                    if (+text > 0) {
+                        setDistance(text);
+                    } else {
+                        Alert.alert('Please enter a positive numeric value.');
+                    }
+                }}
                 keyboardType='numeric'
                 style = {Style.formfield}
                
@@ -91,7 +98,14 @@ export default function AddWorkoutView(){
             <TextInput
                 label="Duration (min)"
                 value={duration}
-                onChangeText={setDuration}
+                onChangeText={text => {
+                    // Allow only numeric values and prevent negative inputs
+                    if (+text > 0) {
+                        setDuration(text);
+                    } else {
+                        Alert.alert('Please enter a positive numeric value.');
+                    }
+                }}
                 keyboardType='numeric'
                 style = {Style.formfield}
             />
