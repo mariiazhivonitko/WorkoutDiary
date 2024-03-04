@@ -26,6 +26,17 @@ export default Style = StyleSheet.create({
         
 
     },
+
+    calendar: {
+        
+            borderWidth: 1,
+            borderColor: 'gray',
+            height: 350,
+            selectedDotColor: 'orange'
+
+         
+        
+    }
     
 })
 export const MyTheme = {

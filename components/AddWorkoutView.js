@@ -1,4 +1,4 @@
-import { View } from "react-native";
+import { Alert, View } from "react-native";
 import { Modal, Portal, Text, Button, PaperProvider } from 'react-native-paper';
 import * as React from 'react';
 import { useState, useContext } from "react";
@@ -44,6 +44,7 @@ export default function AddWorkoutView(){
         else{setWorkouts( prev => [...prev, {"type":value, "distance": (distance*1.60934).toFixed(1), "duration": duration, "date":selected}])
 
         };
+        Alert.alert('Great! New workout was added!')
         setDistance('');
         setDuration('');
         setSelected('');
@@ -99,13 +100,19 @@ export default function AddWorkoutView(){
                 <Modal visible={visible} onDismiss={hideModal} contentContainerStyle={containerStyle}>
                     <Calendar
                         onDayPress={day => {
-                            setSelected(day.day + '.' + day.month + '.' + day.year);
+                            //setSelected(day.day + '.' + day.month + '.' + day.year);
+                            setSelected(day.dateString)
                             setVisible(false)
 
                         }}
                         markedDates={{
                             [selected]: { selected: true, disableTouchEvent: true, selectedDotColor: 'orange' }
                         }}
+                        theme={{selectedDayBackgroundColor: '#663399',
+                        todayTextColor: '#663399',
+                        todayBackgroundColor: "rgb(240, 219, 255)",
+                        textSectionTitleColor: '#b6c1cd',
+                        arrowColor:'#663399'}}
                     />
                 </Modal>
             </Portal>
