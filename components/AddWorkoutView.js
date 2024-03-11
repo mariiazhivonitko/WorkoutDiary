@@ -28,6 +28,7 @@ export default function AddWorkoutView(){
     const containerStyle = {backgroundColor: 'black', padding: 20};
 
     const [selected, setSelected] = useState('');//to select date in the calendar
+    const [date, setDate] = useState('');//to write date in the workout list
 
     //const {workouts, setWorkouts} = useContext(WorkoutContext);
     const {units} = useContext(UnitsContext);
@@ -40,8 +41,8 @@ export default function AddWorkoutView(){
         //setNewWorkout({"type":value, "distance": distance, "duration": duration, "date":selected});
         //setWorkouts = () => [...prev, newWorkout];
         if (units==="km")
-        {setWorkouts( prev => [...prev, {"type":value, "distance": distance, "duration": duration, "date":selected}])}
-        else{setWorkouts( prev => [...prev, {"type":value, "distance": (distance*1.60934).toFixed(1), "duration": duration, "date":selected}])
+        {setWorkouts( prev => [...prev, {"type":value, "distance": distance, "duration": duration, "date":date}])}
+        else{setWorkouts( prev => [...prev, {"type":value, "distance": (distance*1.60934).toFixed(1), "duration": duration, "date":date}])
 
         };
         Alert.alert('Great! New workout was added!')
@@ -118,7 +119,7 @@ export default function AddWorkoutView(){
                 <Modal visible={visible} onDismiss={hideModal} contentContainerStyle={containerStyle}>
                     <Calendar
                         onDayPress={day => {
-                            //setSelected(day.day + '.' + day.month + '.' + day.year);
+                            setDate(day.day + '.' + day.month + '.' + day.year);
                             setSelected(day.dateString)
                             setVisible(false)
 
@@ -135,7 +136,7 @@ export default function AddWorkoutView(){
                 </Modal>
             </Portal>
             <Button mode='contained-tonal' style={Style.button} onPress={showModal} icon='calendar'>
-                {selected ? selected : 'select date'}
+                {selected ? date : 'select date'}
             </Button>
 
             <Button mode="contained" onPress={addWorkout} style={Style.button}>Add Workout</Button>

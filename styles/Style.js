@@ -12,7 +12,9 @@ export default Style = StyleSheet.create({
     },
 
     button: {
-        margin: 10
+        margin: 10,
+        //backgroundColor: 'rgb(48, 209, 88)'
+
        
     },
     header:{
@@ -26,6 +28,7 @@ export default Style = StyleSheet.create({
     },
     formfield:{
         margin: 10,
+        
     },
 
     segmentedButton: {
