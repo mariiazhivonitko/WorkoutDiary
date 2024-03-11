@@ -32,25 +32,28 @@ export default function WorkoutListView(){
         <View style={Style.container}>
             <Text variant="headlineLarge" style={Style.header}>Workouts</Text>
             <SegmentedButtons
-                    style = {Style.button}
+                    style = {Style.segmentedButton}
                     //value={value}
                     //onValueChange={setValue}
                     buttons={[
                         {
                             value: 'run',
                             label: (units === 'km' ? sumDistance("run") : (sumDistance("run") / 1.60934).toFixed(0)) + " " + units,
-                            icon: 'run-fast'
+                            icon: 'run-fast',
+                            uncheckedColor: 'rgb(48, 209, 88)'
 
                         },
                         {
                             value: 'ski',
                             label: (units === 'km' ? sumDistance("ski") : (sumDistance("ski") / 1.60934).toFixed(0)) + " " + units,
-                            icon: 'ski'
+                            icon: 'ski',
+                            uncheckedColor: 'rgb(191, 90, 242)'
                         },
                         {
                             value: 'swim',
                             label: (units === 'km' ? sumDistance("swim") : (sumDistance("swim") / 1.60934).toFixed(0)) + " " + units,
-                            icon: 'swim'
+                            icon: 'swim',
+                            uncheckedColor: 'rgb(100, 210, 255)'
                         },
                     ]}
                 />

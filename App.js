@@ -10,6 +10,9 @@ import WorkoutListView from './components/WorkoutListView';
 import SettingsView from './components/SettingsView';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import Style, { MyTheme } from './styles/Style';
+import { useFonts } from 'expo-font';
+
+
 
 
 const Tab = createMaterialTopTabNavigator();
@@ -43,12 +46,26 @@ function Navigator() {
 
 export default function App() {
 
+  const [loaded] = useFonts({
+    PermanentMarker: require('./assets/fonts/PermanentMarker-Regular.ttf')
+})
+
+
+
   let firstworkouts = [{type: "run", distance: "5", duration: "40", date: "1.1.2024"},
   {type: "swim", distance: "2", duration: "90", date: "2.1.2024"},
   {type: "ski", distance: "10", duration: "60", date: "3.1.2024"}]
 
   const [workouts, setWorkouts] = useState(firstworkouts);
   const [units, setUnits] = useState("km");
+
+  if (!loaded) {
+    console.log('not loaded...')
+    return (<Text>Loading fonts...</Text>)
+
+  } else {
+    console.log('loaded!!!..')
+  
 
   return (
     
@@ -62,5 +79,5 @@ export default function App() {
       </UnitsContext.Provider>
     </WorkoutContext.Provider>
   );
-}
+}}
 

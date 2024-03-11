@@ -1,41 +1,41 @@
 import { StatusBar, StyleSheet } from "react-native";
 import { MD3LightTheme, MD3DarkTheme } from "react-native-paper";
-import { useTheme } from 'react-native-paper'
+import { useTheme } from 'react-native-paper';
+
 
 export default Style = StyleSheet.create({
     container: {
         marginTop: StatusBar.currentHeight + 5,
         display: "flex",
         flex:1,
-        backgroundColor: 'black',
-        
-                
-       
+        backgroundColor: 'black',             
     },
+
     button: {
         margin: 10
        
     },
     header:{
-        fontWeight: 'bold',
+        
         textAlign: 'center',
-        margin: 10
+        marginTop:30,
+        margin: 10,
+        fontSize: 40,
+        fontFamily: 'PermanentMarker',
+        color:'rgb(48, 209, 88)'
     },
     formfield:{
         margin: 10,
-        
     },
 
     segmentedButton: {
         margin: 10,
-        checkedColor: 'orange',
+        //checkedColor: 'orange',
         //backgroundColor: 'green',
         borderWidth: 1, // Add border width
         borderRadius: 20, // Add border radius
-    }
+    },
 
-
-    
 })
 export const MyTheme = {
         ...MD3DarkTheme,

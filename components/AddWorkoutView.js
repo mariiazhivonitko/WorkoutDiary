@@ -58,7 +58,6 @@ export default function AddWorkoutView(){
             <SafeAreaView >
                 <SegmentedButtons
                     style = {Style.segmentedButton}
-                    checkedColor = {'orange'}
                     value={value}
                     onValueChange={setValue}
                     
