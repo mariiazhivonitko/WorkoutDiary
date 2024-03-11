@@ -24,19 +24,17 @@ export default Style = StyleSheet.create({
     formfield:{
         margin: 10,
         
-
     },
 
-    calendar: {
-        
-            borderWidth: 1,
-            borderColor: 'gray',
-            height: 350,
-            selectedDotColor: 'orange'
-
-         
-        
+    segmentedButton: {
+        margin: 10,
+        checkedColor: 'orange',
+        //backgroundColor: 'green',
+        borderWidth: 1, // Add border width
+        borderRadius: 20, // Add border radius
     }
+
+
     
 })
 export const MyTheme = {

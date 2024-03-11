@@ -57,25 +57,30 @@ export default function AddWorkoutView(){
             <Text variant="headlineLarge" style={Style.header}>Add workout</Text>
             <SafeAreaView >
                 <SegmentedButtons
-                    style = {Style.formfield}
+                    style = {Style.segmentedButton}
+                    checkedColor = {'orange'}
                     value={value}
                     onValueChange={setValue}
+                    
                     buttons={[
                         {
                             value: 'run',
                             label: 'Run',
-                            icon: 'run-fast'
+                            icon: 'run-fast',
+                            checkedColor: 'rgb(48, 209, 88)'
 
                         },
                         {
                             value: 'ski',
                             label: 'Ski',
-                            icon: 'ski'
+                            icon: 'ski',
+                            checkedColor: 'rgb(191, 90, 242)'
                         },
                         {
                             value: 'swim',
                             label: 'Swim',
-                            icon: 'swim'
+                            icon: 'swim',
+                            checkedColor: 'rgb(100, 210, 255)'
                         },
                     ]}
                 />
